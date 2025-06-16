@@ -1,0 +1,1794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aravind Kumar Ch - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Modern Portfolio CSS with Dark Gradient Theme */
+
+        /* CSS Variables for Easy Customization */
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e293b;
+            --accent-color: #10b981;
+            --accent-dark: #059669;
+            --danger-color: #ef4444;
+            --dark-color: #020617;
+            --light-color: #f8fafc;
+            --white: #ffffff;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-light: #e2e8f0;
+            --border-color: #334155;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-dark) 100%);
+            --gradient-card: linear-gradient(145deg, #1e293b 0%, #0f172a 100%);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 0.75rem;
+            --font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+        }
+
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--gradient-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 2rem; }
+        h4 { font-size: 1.5rem; }
+        h5 { font-size: 1.25rem; }
+        h6 { font-size: 1rem; }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--text-light);
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--accent-color), var(--text-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .nav-links a.active {
+            color: var(--text-light);
+        }
+
+        .nav-links a.active::before {
+            width: 80%;
+            background: var(--accent-color);
+        }
+
+        /* Mobile Menu Button */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(16,185,129,0.05)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            z-index: 2;
+        }
+        .download-resume {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: black;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: var(--transition);
+            animation: fadeInUp 1s ease 0.5s forwards;
+            opacity: 0;
+        }
+        
+        .download-resume:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.3);
+        }
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--text-light), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: var(--gradient-accent);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            background: linear-gradient(135deg, var(--accent-dark) 0%, var(--accent-color) 100%);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5rem;
+            height: 0.25rem;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 300px;
+            height: 300px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.3) 0%, rgba(15, 23, 42, 0.7) 100%);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .contact-info > div {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+            background: var(--secondary-color);
+            border-radius: var(--border-radius);
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info > div:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            border-color: var(--accent-color);
+        }
+
+        .contact-info i {
+            color: var(--accent-color);
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--gradient-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .skill-category h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.25rem;
+        }
+
+        .skill-category i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .skill-item {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem 0.5rem 0.25rem 0;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: var(--transition);
+        }
+
+        .skill-item:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Section
+        .experience-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-accent);
+        }
+
+        .experience-item {
+            position: relative;
+            padding-left: 5rem;
+            margin-bottom: 3rem;
+            background: var(--gradient-card);
+            padding: 2rem 2rem 2rem 5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .experience-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 1.25rem;
+            top: 2rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--secondary-color);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .experience-item h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 1rem;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .duration i {
+            color: var(--accent-color);
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        } */
+         /* Experience Section */
+.experience-timeline {
+    --timeline-left: 2rem;
+    --bullet-size: 1.5rem;
+    --bullet-left: calc(var(--timeline-left) - 0.75rem);
+    --item-padding-left: 5rem;
+    
+    position: relative;
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.experience-timeline::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 0 var(--timeline-left);
+    width: 2px;
+    background: var(--gradient-accent);
+}
+
+.experience-item {
+    --bullet-border: 3px solid var(--accent-color);
+    
+    position: relative;
+    margin-block-end: 3rem;
+    padding: 2rem 2rem 2rem var(--item-padding-left);
+    background: var(--gradient-card);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--accent-color);
+}
+
+.experience-item::before {
+    content: '';
+    position: absolute;
+    left: var(--bullet-left);
+    top: 2rem;
+    width: var(--bullet-size);
+    height: var(--bullet-size);
+    background: var(--secondary-color);
+    border: var(--bullet-border);
+    border-radius: 50%;
+}
+
+.experience-item h3 {
+    color: var(--text-light);
+    margin-block-end: 0.5rem;
+}
+
+.company {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-block-end: 0.5rem;
+}
+
+.duration {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-block-end: 1rem;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 1rem;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.duration i {
+    color: var(--accent-color);
+}
+
+.experience-item ul {
+    list-style: none;
+    padding-inline-start: 0;
+}
+
+.experience-item li {
+    position: relative;
+    padding-inline-start: 1.5rem;
+    margin-block-end: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.experience-item li::before {
+    content: '▸';
+    position: absolute;
+    inset-inline-start: 0;
+    color: var(--accent-color);
+    font-weight: bold;
+}
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex: 1;
+        }
+
+        .project-tools {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tool-tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-color);
+            border-radius: var(--border-radius);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Education Section */
+        .education-item {
+            background: var(--gradient-card);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .education-item h3 {
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .school {
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .score {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--gradient-accent);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-color);
+        }
+
+        .certification-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certification-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .certification-card:hover .certification-image img {
+            transform: scale(1.05);
+        }
+
+        .certification-content {
+            padding: 1.5rem;
+        }
+
+        .certification-card h3 {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .certification-card i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .certification-card p {
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        /* Modal for Certificate Details */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(2, 6, 23, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: var(--gradient-card);
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            border: 1px solid var(--accent-color);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-header h3 {
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-body img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 4rem 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+        }
+
+        footer h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 1.25rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+            color: var(--white);
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
+
+        footer p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--secondary-color);
+                padding: 5rem 2rem;
+                transition: var(--transition);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                border-left: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .hero {
+                padding: 7rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .about-image {
+                margin: 0 auto;
+            }
+            
+            .experience-timeline::before {
+                left: 1rem;
+            }
+            
+            .experience-item {
+                padding-left: 3rem;
+            }
+            
+            .experience-item::before {
+                left: 0.75rem;
+            }
+            
+            .projects-grid,
+            .skills-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 0.75rem 1.5rem;
+            }
+            
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links a {
+                width: 2.75rem;
+                height: 2.75rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Animation classes for JavaScript */
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .text-right { text-align: right; }
+
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 1rem; }
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mb-5 { margin-bottom: 3rem; }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 1rem; }
+        .mt-4 { margin-top: 1.5rem; }
+        .mt-5 { margin-top: 3rem; }
+
+        /* Print Styles */
+        @media print {
+            header {
+                position: static;
+                background: none !important;
+            }
+            
+            .hero {
+                background: none !important;
+                color: var(--text-primary) !important;
+                padding: 2rem 0;
+            }
+            
+            .section {
+                padding: 2rem 0;
+            }
+            
+            .experience-item,
+            .project-card,
+            .skill-category,
+            .certification-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid var(--border-color);
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus styles for keyboard navigation */
+        a:focus,
+        button:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: 2px;
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            :root {
+                --primary-color: #000;
+                --secondary-color: #333;
+                --text-primary: #000;
+                --text-secondary: #333;
+                --border-color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Aravind Kumar Chittem</div>
+            <button class="menu-btn" id="menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Aravind Kumar Chittem</h1>
+            <p>CSE with Information Security | Cybersecurity Enthusiast | Software Developer </p>
+            <a href="#about" class="cta-button">Explore My Journey <i class="fas fa-arrow-down"></i></a>
+            <a href="https://example.com/resume.pdf" target="_blank" class="download-resume">
+                    <i class="fas fa-download"></i> Download Resume</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="about" class="section">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="" alt="Aravind Kumar Ch">
+                </div>
+                <div class="about-text">
+                    <p>Motivated and disciplined final year B.Tech student with a CGPA of 8.17, Aspiring cybersecurity professional with hands-on experience in penetration testing and developing custom security tools. Skilled in Java, SQL, and PHP, with a strong background in building secure, dynamic server-side applications and integrating databases with web platforms.</p>
+                    <p>Passionate about threat intelligence and vulnerability assessment, and also experienced in full stack development. I thrive in team environments, enjoy creating impactful tech solutions, and continuously explore new technologies at the intersection of security and development.
+
+</p>
+                    <div class="contact-info">
+                        <div><i class="fas fa-map-marker-alt"></i> Ongole, Andhra Pradesh 523001</div>
+                        <div><i class="fas fa-phone"></i> +91 6361639271</div>
+                        <div><i class="fas fa-envelope"></i> aravindch156@gmail.com</div>
+                        <div><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/aravind-kumar-chittem-0a1982269/">Aravind kumar chittem</a></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-item">Java</div>
+                    <div class="skill-item">C/C++</div>
+                    <div class="skill-item">MySQL</div>
+                    <div class="skill-item">Python</div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Data Structures</h3>
+                    <div class="skill-item">Arrays</div>
+                    <div class="skill-item">Linked Lists</div>
+                    <div class="skill-item">Stacks</div>
+                    <div class="skill-item">Queues</div>
+                    <div class="skill-item">Trees</div>
+                    <div class="skill-item">Graphs</div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-globe"></i> Web Technologies</h3>
+                    <div class="skill-item">HTML</div>
+                    <div class="skill-item">CSS</div>
+                    <div class="skill-item">JavaScript</div>
+                    <div class="skill-item">PHP</div>
+                    <div class="skill-item">Bootstrap</div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-shield-alt"></i> Security</h3>
+                    <div class="skill-item">penetration testing</div>
+                    <div class="skill-item">vulnerability assessment</div>
+                    <div class="skill-item">Authentication</div>
+                    <div class="skill-item">IAM</div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-gear"></i>Tools</h3>
+                    <div class="skill-item">BurpSuite</div>
+                    <div class="skill-item">Metasploit</div>
+                    <div class="skill-item">OWASP Zap</div>
+                    <div class="skill-item">Nmap</div>
+                    <div class="skill-item">VScode</div>
+                    <div class="skill-item">GitHub</div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fa-solid fa-diagram-project"></i>Additional Skills</h3>
+                    <div class="skill-item">Problem-Solving</div>
+                    <div class="skill-item">Communication</div>
+                    <div class="skill-item">Project Management</div>
+                </div>
+            </div>
+        </section>
+
+
+<section id="experience" class="section">
+    <div class="container">
+        <h2>Professional Experience</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <h3>Security Intern</h3>
+                <div class="company">Sithafal Technologies</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> May 2025 – Present
+                </div>
+                <div class="location">Tirupati, Andhra Pradesh, India · On-site</div>
+                <ul>
+                    <li>Conducting vulnerability management and penetration testing on enterprise systems to identify and mitigate security risks.</li>
+                    <li>Collaborating with senior security analysts to analyze threat intelligence and recommend remediation strategies.</li>
+                    <li>Documenting findings and presenting actionable insights to technical teams for continuous improvement.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Technical Inner Core Member</h3>
+                <div class="company">IET-VIT Chapter</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> August 2024 – April 2025
+                </div>
+                <div class="location">Vellore, Tamil Nadu, India</div>
+                <ul>
+                    <li>Served as a key member of the IET-Team Fourth Dimension, contributing to technical strategy and project execution.</li>
+                    <li>Led front-end development initiatives and mentored peers in web technologies and secure coding practices.</li>
+                    <li>Organized workshops and events to foster learning in cybersecurity and web development among students.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Web Intern</h3>
+                <div class="company">Bharat Intern</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> March 2024 – April 2024
+                </div>
+                <div class="location">Virtual</div>
+                <ul>
+                    <li>Successfully completed a virtual internship program in web development, focusing on hands-on project delivery.</li>
+                    <li>Developed a Netflix homepage clone and a personal portfolio website using HTML and CSS, demonstrating strong front-end skills.</li>
+                    <li>Applied best practices in responsive design and user experience.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/i65RFpRWHV5cnLwJYekbDiTCOm4cc61sXweGKNMTFnE/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA5LzYyLzgzLzUz/LzM2MF9GXzk2Mjgz/NTM1NF80T3N6M3A4/RmpZYmp6SDE0bTFF/MW9MR2R4TVlYVkxB/dC5qcGc" alt="Recon-Domain">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-solid fa-file-contract"></i>Recon-Domain</h3>
+                        <p> Domain Reconnaissance Web App that automates the process of gathering crucial information about any domain with just one click! and This tool performs key reconnaissance steps commonly used in cybersecurity:</p>
+                        <p>WHOIS Lookup, DNS Records, Nmap Port Scan, and Network Info</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Nodejs</span>
+                            <span class="tool-tag">Nmap</span>
+                            <span class="tool-tag">WHOIS</span>
+                            <span class="tool-tag">DNS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/Domain-Recon" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://www.linkedin.com/posts/aravind-kumar-chittem-0a1982269_cybersecurity-bugbounty-webapp-activity-7338888852389974017-XaoE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEHRUfkBJdyhG_-45d41HCE60lijeCuqBGE" class="project-link"><i class="fas fa-external-link-alt"></i>Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/n_Z6jhMqbDQwqlpLfb6bsMf2JYTyB3mhMhLJarA5VbA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA2LzYxLzAxLzYz/LzM2MF9GXzY2MTAx/NjMyNl9PTkY5WGQx/SEVWUDZPcExhZXNI/STBFQlNmUXJPcncy/RC5qcGc" alt="Subdomain Scanner">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-solid fa-globe"></i> Subdomain Scanner Tool</h3>
+                        <p>Subdomain Scanner that helps uncover and analyze subdomains for any domain. Whether you're into bug bounty hunting, penetration testing, or just exploring web security, this tool makes the reconnaissance process easier and more visual.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">Node.js</span>
+                            <span class="tool-tag">SecurityTrails API</span>
+                            <span class="tool-tag">HTML</span>
+                            <span class="tool-tag">CSS</span>
+                            <span class="tool-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/Subdomain-Scanner" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://www.linkedin.com/posts/aravind-kumar-chittem-0a1982269_subdomain-scanner-tool-excited-to-share-activity-7337753386634702848-QyG7?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEHRUfkBJdyhG_-45d41HCE60lijeCuqBGE" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/WuF9lIbi-mZfczZi8PC0I9RRDzOB0f-PJXlXyg40vFA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9zaW1w/bGUtbWFpbC10cmFu/c2Zlci1wcm90b2Nv/bC1zbXRwLXNlcnZl/ci10Y3AtaXAtc2Vu/ZGluZy1yZWNlaXZp/bmctZS0yNTYyOTYw/NjQuanBn" alt="𝐒𝐌𝐓𝐏 𝐌𝐚𝐢𝐥 𝐂𝐨𝐦𝐩𝐨𝐬𝐞𝐫">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-solid fa-envelope"></i>𝐒𝐌𝐓𝐏 𝐌𝐚𝐢𝐥 𝐂𝐨𝐦𝐩𝐨𝐬𝐞𝐫</h3>
+                        <p>Developed a responsive bulk email sender using PHP, JavaScript, and PHPMailer, integrated with Gmail SMTP. The tool supports multiple recipients, real-time validation, and file attachments (PDF, DOC, images).</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">HTML</span>
+                            <span class="tool-tag">CSS</span>
+                            <span class="tool-tag">JavaScript</span>
+                            <span class="tool-tag">PHP</span>
+                            <span class="tool-tag">Gmail SMTP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/SMTP_MAIL_sender" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://www.linkedin.com/posts/aravind-kumar-chittem-0a1982269_btech-webdevelopment-php-activity-7336282869830438913-v3IE?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEHRUfkBJdyhG_-45d41HCE60lijeCuqBGE" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/aqujZMKCM5P1OoOXbN4kqR-FtNZGpEo9H0xnrTPffCU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzEzLzY5Lzc2LzI5/LzM2MF9GXzEzNjk3/NjI5OTZfYjJrNVF0/T0dWY1ljRm1zRkNy/eG5qWTZoRnltWUpR/Vk0uanBn" alt="SQL Injection Preventor">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-solid fa-database"></i>SQL Injection Preventor</h3>
+                        <p>Created a secure login page using PHP and MySQL, designed to protect against SQL injection attacks — a common web vulnerability. The system checks and sanitizes user input to block malicious SQL queries, especially on the username field.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">PHP</span>
+                            <span class="tool-tag">MySQL</span>
+                            <span class="tool-tag">phpMyAdmin</span>
+                            <span class="tool-tag">Burp Suite</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/sqlnject-login" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://aravindkumar.free.nf/" class="project-link"><i class="fas fa-external-link-alt"></i>Demo</a>
+                        </div>
+                    </div>
+                </div>
+                   <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/BoTIwGhxDoS9s6tiro_tEnJr-kCRurC_Q2H5qjF9ctk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE5/MTM5NTAwOS92ZWN0/b3IvZ3JvdXAtb2Yt/cGVvcGxlLXN0YW5k/LW5lYXItYmlnLWNh/bGVuZGFyLXdhdGNo/ZXMtZG9jdW1lbnQt/dGltZS1tYW5hZ2Vt/ZW50LXdvcmstc2No/ZWR1bGUuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPXYxWUYt/ZXNmUG9LckNzWFMz/UDN4dlB5QVp2eGU2/VHc4Zmx3TTNSbDVX/aXc9" alt="EventHub">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-regular fa-calendar-xmark"></i>EventHub</h3>
+                        <p>Led a team to build a complete event registration platform with a focus on user interaction, secure login, and efficient data management. The platform includes features like event creation, user registration, club listings, and account management, providing a smooth and organized experience for both users and admins.</p>                        
+                        <div class="project-tools">
+                            <span class="tool-tag">PHP</span>
+                            <span class="tool-tag">MySQL</span>
+                            <span class="tool-tag">HTML</span>
+                            <span class="tool-tag">CSS</span>
+                            <span class="tool-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/Eventhub" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i>Demo in progress</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://imgs.search.brave.com/8_llH4tDd5ZwZPRgjysHqUjapU3PqKhk5lb-sCuZ0fg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvOTQy/NTc1NjMyL3Bob3Rv/L29ubGluZS1zaG9w/LWNvbmNlcHQtb24t/dGFibGV0LWFuZC1z/bWFydHBob25lLXNj/cmVlbi5qcGc_cz02/MTJ4NjEyJnc9MCZr/PTIwJmM9VEt5eFlT/Wm9EZldNRXBmU0d0/dkhPdFFYTmFhcHgz/blA3VTlySWZSN0lx/dz0" alt="Stop-N-Shop">
+                    </div>
+                    <div class="project-content">
+                        <h3><i class="fa-solid fa-cart-shopping"></i> Stop-N-Shop</h3>
+                        <p>"Stop-N-Shop" is a mini e-commerce website built to offer a smooth and secure shopping experience. It features a responsive design, real-time data handling, and secure user login and registration. The project focuses on delivering a simple yet functional platform for browsing products and managing user interactions.</p>
+                        <div class="project-tools">
+                            <span class="tool-tag">HTML</span>
+                            <span class="tool-tag">CSS</span>
+                            <span class="tool-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/aravindkumarchittem/Stop-N-Shop" class="project-link"><i class="fab fa-github"></i> Code</a>
+                            <a href="https://j2mkr3.csb.app" class="project-link"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2>Education</h2>
+            <div class="education-item">
+                <h3>Bachelor of Technology in Computer Science with Information Security</h3>
+                <div class="school">Vellore Institute of Technology, Vellore</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> 2022 - 2026 (Expected)
+                </div>
+                <p>Specializing in Information Security with coursework in cryptography, network security, secure coding practices, and ethical hacking.</p>
+                <div class="score">CGPA: 8.17/10.0</div>
+            </div>
+            <div class="education-item">
+                <h3>Higher Secondary Education (12th Grade)</h3>
+                <div class="school">FIITJEE Junior College, Vijayawada</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> 2020 - 2022
+                </div>
+                <p>Completed with a focus on Mathematics, Physics, and Chemistry.</p>
+                <div class="score">Percentage: 85.7 %</div>
+            </div>
+            <div class="education-item">
+                <h3>Secondary Education (10th Grade)</h3>
+                <div class="school">Loyola public school, guntur</div>
+                <div class="duration">
+                    <i class="fas fa-calendar-alt"></i> 2020
+                </div>
+                <p>Completed my Secondary education</p>
+                <div class="score">Percentage: 82.6%</div>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card" onclick="openModal('cert1')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/QsYsHzFxVGs7h_c8hWL-DrJQJcKCtUfpedORgeoi9aY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdHls/ZXMucmVkZGl0bWVk/aWEuY29tL3Q1XzJ6/cDU1L3N0eWxlcy9i/YW5uZXJCYWNrZ3Jv/dW5kSW1hZ2Vfand3/eGhsdjBuc2kzMS5q/cGc_Zm9ybWF0PXBq/cGcmcz0yNjgwNGYw/OWJmY2NhNzgzOWQ4/OTI5ZjdmNGRmZjY2/M2QzM2Y5M2Rh" alt="Jr Penetration Tester">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fa-solid fa-shield"></i>Jr Penetration Tester</h3>
+                        <p>completed the Jr Penetration Tester Learning Path in TryHackme</p>
+                    </div>
+                </div>
+                <div class="certification-card" onclick="openModal('cert2')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/wVV18Esuk3a2GykTBBeB2ChVwu8evbjZlyArSLK7LjQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9pbnRlcm5ldC10/ZWNobm9sb2d5LW5l/dHdvcmstY3liZXIt/c2VjdXJpdHktY29u/Y2VwdF8zNDYyOS01/NTIuanBnP3NlbXQ9/YWlzX2h5YnJpZA" alt="Web Fundamentals">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fa-solid fa-wifi"></i>Web Fundamentals</h3>
+                        <p>completed the Web Fundamentals Learning Path</p>
+                    </div>
+                </div>
+                <div class="certification-card" onclick="openModal('cert3')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/wM7xp2zSwrSc89Zhn62OEG3n9AN_GouTKzYfA23x2p4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM1/MDU5NTU2Ni9waG90/by9jeWJlci1zZWN1/cml0eS1maXJld2Fs/bC1pbnRlcmZhY2Ut/cHJvdGVjdGlvbi1j/b25jZXB0LWJ1c2lu/ZXNzd29tYW4tcHJv/dGVjdGluZy1oZXJz/ZWxmLWZyb20uanBn/P3M9NjEyeDYxMiZ3/PTAmaz0yMCZjPTlp/NC1tV3N6YzVGUlVf/aWFJM0lTSGttSktI/bjFaQ2ZoV2plY2hP/NEg5Tlk9" alt="Cybersecurity Job Simulation">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fa-solid fa-shield"></i>Cybersecurity Job Simulation</h3>
+                        <p>Gained hands-on experience in key security tasks.</p>
+                    </div>
+                </div>
+                <div class="certification-card" onclick="openModal('cert4')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/jriuVAapwO5oVYNSirPdmvz6jIb7JZmrPSjKmLMjcSk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9sb2dpbi1wYXNz/d29yZC1jeWJlci1z/ZWN1cml0eS1jb25j/ZXB0LWRhdGEtcHJv/dGVjdGlvbi1zZWN1/cmVkLWludGVybmV0/LWFjY2Vzcy1jeWJl/cnNlY3VyaXR5XzEx/NTAyNTMtNjMxLmpw/Zz9zZW10PWFpc19o/eWJyaWQmdz03NDA" alt="Cybersecurity Analyst Job Simulation">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fa-solid fa-shield"></i>Cybersecurity Analyst Job Simulation</h3>
+                        <p>completed the Cybersecurity Analyst Job Simulation by TATA on Forage.</p>
+                    </div>
+                </div>
+                <div class="certification-card" onclick="openModal('cert5')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/ZE-7V5JEhRaPl2mY7pXtsbs34AOKibdzvVytzflvikg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTkx/OTk4NDQzNS9waG90/by9zeXN0ZW0td2Fy/bmluZy1oYWNrZWQt/YWxlcnQtY3liZXJh/dHRhY2stb24tc21h/cnRwaG9uZS1uZXR3/b3JrLWN5YmVyc2Vj/dXJpdHktdnVsbmVy/YWJpbGl0eS5qcGc_/cz02MTJ4NjEyJnc9/MCZrPTIwJmM9dE8w/Tm9EYWdCZndPWFhm/Yk85WmhqQmhiRFVS/OFVGNzlIbmtUSVpv/UXpJVT0" alt="Web Development">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fa-solid fa-shield"></i>Cyber Security Course Completion</h3>
+                        <p>completed the Cyber Security course at Teachnook, in collaboration with Cognizance'24</p>
+                    </div>
+                </div>
+                <div class="certification-card" onclick="openModal('cert6')">
+                    <div class="certification-image">
+                        <img src="https://imgs.search.brave.com/TMdeqlXLns_vw1PpYchOB8q9FTrDeI8ARFowOFSWfS4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudG9paW1nLmNv/bS90aHVtYi9tc2lk/LTEwMzA2ODM3MCxp/bWdzaXplLTE4Njcw/LHdpZHRoLTQwMCxy/ZXNpemVtb2RlLTQv/MTAzMDY4MzcwLmpw/Zw" alt="Web Development">
+                    </div>
+                    <div class="certification-content">
+                        <h3><i class="fas fa-code"></i>Smart India Hackathon</h3>
+                        <p>Certificate of participation in Internal SIH.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Certificate Modals -->
+    <div id="cert1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-shield"></i> CERTIFICATE OF COMPLETION</h3>
+                <button class="close-modal" onclick="closeModal('cert1')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="C:\Users\aravi\Pictures\Screenshots\Screenshot 2025-06-11 180254.png" alt="Java Certification">
+                <p>I’ve completed the Jr Penetration Tester Learning Path on TryHackMe!, 
+🛡️This course deepened my skills in areas such as: Network and web application security, Vulnerability assessment, Exploitation techniques, Practical hands-on penetration testing labs.
+<p>⏱️ Course Duration: 30 hours 40 minutes</p>
+📜 Certificate ID: THM-HFQCZZGVRI</p>
+                <p><strong>Issued:</strong>11th June 2025</p>
+                <!-- <p><strong>Skills Validated:</strong> Penetration Testing, Vulnerability management </p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1uqn7OszN0yW7QDBs-5nvf49lHreLpsPA/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="cert2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-wifi"></i>Web Fundamentals</h3>
+                <button class="close-modal" onclick="closeModal('cert2')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="C:\Users\aravi\Pictures\certificates\Screenshot 2025-06-14 202855.png" alt="Cybersecurity Certification">
+                <p>I’ve completed the Web Fundamentals Learning Path on TryHackMe! This course provided a solid foundation in essential web technologies, including HTTP/HTTPS, and client-server communication, while also introducing me to common web vulnerabilities. It was a great way to strengthen my understanding of how the web works from both development and security perspectives.</p>
+                <p>⏱️ Course Duration: 17 hours 20 minutes</p>
+                <p>📜 Certificate ID: THM-67JZ87IGNB</p>
+                <p><strong>Issued:</strong>4th June 2025</p>
+                <!-- <p><strong>Skills Validated:</strong> Web Security, Network Security, Security Compliance, Network Protocols</p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1azO1SoBiBOGNvzscjXc5ZxrtO2YTUicm/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="cert3" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-shield"></i>Cybersecurity Job Simulation </h3>
+                <button class="close-modal" onclick="closeModal('cert3')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="c:\Users\aravi\Pictures\certificates\Screenshot 2025-06-14 204314.png" alt="Cybersecurity Job Simulation ">
+                <p>Successfully completed a Cybersecurity Job Simulation in May 2025, gaining hands-on experience in key security tasks. Interpreted the results of a phishing simulation campaign to identify vulnerable teams. This exercise strengthened my ability to assess organizational risk and promote security best practices within a corporate environment.</p>
+                <!-- <p>⏱️ Course Duration: 17 hours 20 minutes</p>
+                <p>📜 Certificate ID: THM-67JZ87IGNB</p> -->
+                <p><strong>Issued: </strong>22nd May 2025</p>
+                <!-- <p><strong>Skills Validated:</strong> React.js, Node.js, Express, MongoDB, REST APIs, Responsive Design</p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1kRWjWT7WLeoPyvPDfRp7Tx1s2jDVw2Uu/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+    <div id="cert4" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-shield"></i>Cybersecurity Job Simulation </h3>
+                <button class="close-modal" onclick="closeModal('cert4')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="C:\Users\aravi\Pictures\certificates\Screenshot 2025-06-14 205708.png" alt="Cybersecurity Job Simulation ">
+                <p>Excited to share my latest achievement! I have successfully completed the Cybersecurity Analyst Job Simulation by TATA on Forage. This experience has helped me strengthen my skills in Identity and Access Management (IAM) fundamentals</p>
+                                <!-- <p>⏱️ Course Duration: 17 hours 20 minutes</p>
+                <p>📜 Certificate ID: THM-67JZ87IGNB</p> -->
+                <p><strong>Issued: </strong>23th March 2025</p>
+                <!-- <p><strong>Skills Validated:</strong> React.js, Node.js, Express, MongoDB, REST APIs, Responsive Design</p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1ZEGr08tqUF3uVt1XW4ebYKMDNdp8NRS_/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+    <div id="cert6" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-code"></i>Smart India Hackathon</h3>
+                <button class="close-modal" onclick="closeModal('cert6')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="C:\Users\aravi\Pictures\certificates\Screenshot 2025-06-14 210045.png" alt="Cybersecurity Job Simulation ">
+                <p>participated in Internal Smart India Hackathon from VIT-Vellore. Here is my certificate of participation in Internal SIH. Our Problem Statement Title: Mental health and well-being surveillance, assessment and tracking solution among children. </p>
+                                <!-- <p>⏱️ Course Duration: 17 hours 20 minutes</p>
+                <p>📜 Certificate ID: THM-67JZ87IGNB</p> -->
+                <p><strong>Issued: </strong>26th September 2023</p>
+                <!-- <p><strong>Skills Validated:</strong> React.js, Node.js, Express, MongoDB, REST APIs, Responsive Design</p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1gffbfDtx3iSsX7OZllvqdq_exJDRBdRe/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+    <div id="cert5" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-graduation-cap"></i>Course Completion</h3>
+                <button class="close-modal" onclick="closeModal('cert5')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="C:\Users\aravi\Pictures\certificates\Screenshot 2025-06-14 210257.png" alt="Cybersecurity Job Simulation ">
+                <p>successfully completed the Cyber Security course at Teachnook, in collaboration with Cognizance'24 IIT Roorkee. Engaged in comprehensive learning modules covering the fundamentals of cybersecurity, including threat analysis, risk assessment, and mitigation strategies. </p>
+                                <!-- <p>⏱️ Course Duration: 17 hours 20 minutes</p>
+                <p>📜 Certificate ID: THM-67JZ87IGNB</p> -->
+                <p><strong>Issued: </strong> 30th April 2024</p>
+                <!-- <p><strong>Skills Validated:</strong> React.js, Node.js, Express, MongoDB, REST APIs, Responsive Design</p> -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://drive.google.com/file/d/1gliEFxr8pbM8UTWLoK9-KdUCNp-OCyHG/view?usp=sharing" class="project-link"><i class="fas fa-external-link-alt"></i> Verify Credential</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            <h3>Let's Connect</h3>
+            <p>Feel free to reach out or just to say hello!</p>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/aravind-kumar-chittem-0a1982269/"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/aravindkumarchittem"><i class="fab fa-github"></i></a>
+                <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a> -->
+            </div>
+            <p>&copy; 2025 Aravind Kumar Chittem.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navLinks = document.getElementById('nav-links');
+
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                    
+                    // Update active nav link
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Sticky Header on Scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        // Active Navigation Link Based on Scroll Position
+        const sections = document.querySelectorAll('section');
+        
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Certificate Modal Functions
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside content
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.section, .project-card, .skill-category, .experience-item, .education-item, .certification-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    element.classList.add('fade-in-up');
+                }
+            });
+        };
+
+        // Initial check when page loads
+        window.addEventListener('load', animateOnScroll);
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>
